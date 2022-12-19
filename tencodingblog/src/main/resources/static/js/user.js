@@ -18,11 +18,27 @@ let index = {
 		let data = {
 			username: $("#username").val(),
 			password: $("#password").val(),
-			email: $("#email").val
+			email: $("#email").val(),
 		}
 
-		$.ajax({}).done().fail()
-	}
+		$.ajax({
+			type: "POST",
+			url: "/api/user",
+			data: JSON.stringify(data),
+			contentType: "application/json; charset=UTF-8",
+			dataType: "json",
+		}).done(function(data, textStatus, xhr){
+			
+			if(data.status == "OK"){
+				alert("회원가입 완료");
+				location.href = "/";
+			}
+				
+		}).fail(function(error){
+			alert("회원가입 실패" + error.responseJSON.msg);
+			console.log(error);
+		});
+	},
 
 
 }

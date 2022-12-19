@@ -16,5 +16,5 @@
 	</form>
 		<button type="submit" class="btn btn-primary" id="btn--join">signUp</button>
 </div>
-
+<script type="text/javascript" src="../js/user.js"></script>
 <%@ include file="../layout/footer.jsp"%>
