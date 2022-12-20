@@ -1,4 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib uri = "http://java.sun.com/jsp/jstl/core" prefix = "c" %>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
+<sec:authorize access="isAuthenticated()">
+ <sec:authentication property="principal" var="principal" />
+</sec:authorize>
 <!DOCTYPE html>
 <html>
 <head>
@@ -22,8 +27,8 @@
 		</button>
 		<div class="collapse navbar-collapse" id="collapsibleNavbar">
 			<ul class="navbar-nav">
-				<li class="nav-item"><a class="nav-link" href="/user/login_form">로그인</a></li>
-				<li class="nav-item"><a class="nav-link" href="/user/join_form">회원가입</a></li>
+				<li class="nav-item"><a class="nav-link" href="/auth/login_form">로그인</a></li>
+				<li class="nav-item"><a class="nav-link" href="/auth/join_form">회원가입</a></li>
 			</ul>
 		</div>
 	</nav>

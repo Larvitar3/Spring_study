@@ -7,9 +7,6 @@ let index = {
 			this.join();
 		});
 
-		$("#btn--login").bind("click", () => {
-			this.login();
-		});
 
 	},
 
@@ -23,7 +20,7 @@ let index = {
 
 		$.ajax({
 			type: "POST",
-			url: "/api/user",
+			url: "/auth/joinProc",
 			data: JSON.stringify(data),
 			contentType: "application/json; charset=UTF-8",
 			dataType: "json",
@@ -44,3 +41,22 @@ let index = {
 }
 
 index.init();
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
