@@ -1,7 +1,5 @@
 package com.tencoding.blog.service;
 
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -40,6 +38,24 @@ public class BoardService {
 			return new IllegalArgumentException("해당 글을 찾을 수 없습니다.");
 		});
 	}
+	
+	@Transactional
+	public void deleteById(int id) {
+		boardRepository.deleteById(id);
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	
 }

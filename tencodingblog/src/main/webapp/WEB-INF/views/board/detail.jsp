@@ -6,7 +6,7 @@
 
 <div class="container">
 	<button class="btn btn-info" onclick="history.back">뒤로가기</button>
-	<button class="btn btn-warning">수정</button>
+	<button class="btn btn-warning" >수정</button>
 	<button class="btn btn-danger" id="btn--delete">삭제</button>
 	<br />
 	<br />
@@ -26,4 +26,5 @@
 </div>
 <br/>
 <br/>
+<script type="text/javascript" src="../js/board.js"></script>
 <%@ include file="../layout/footer.jsp"%>
