@@ -7,10 +7,10 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import com.tencoding.blog.dto.User;
-//시큐리티가 로그인 요청을 가로채서
-//로그인을 처리하고(DB) 완료되면 UserDetails 타입의
-//오브젝트를 시큐리티의 고유한 세션 저장소에 저장을 해준다.
-//(우리가 새롭게 정의한 Object로 처리할 예정)
+
+import lombok.Data;
+
+
 public class PrincipalDetail implements UserDetails{
 	
 	private User user;
@@ -19,6 +19,15 @@ public class PrincipalDetail implements UserDetails{
 		this.user = user;
 	}
 
+	public User getUser() {
+		return user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
+	}
+	
+	
 	@Override
 	public Collection<? extends GrantedAuthority> getAuthorities() {
 		
