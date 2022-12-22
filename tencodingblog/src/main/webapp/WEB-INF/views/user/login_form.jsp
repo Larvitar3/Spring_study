@@ -8,7 +8,7 @@
 			<label for="username">username : </label> <input name="username" type="text" value="tenco" class="form-control" placeholder="Enter username" id="username">
 		</div>
 		<div class="form-group">
-			<label for="password">password :</label> <input name="password" type="password" value="asd1234" class="form-control" placeholder="Enter password" id="password">
+			<label for="password">password :</label> <input name="password" type="password" value="asd12345" class="form-control" placeholder="Enter password" id="password">
 		</div>
 	<button type="submit"  class="btn btn-primary">signIn</button>
 	</form>

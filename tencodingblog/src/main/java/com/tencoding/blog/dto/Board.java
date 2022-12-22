@@ -13,9 +13,12 @@ import javax.persistence.JoinColumn;
 import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.OrderBy;
 
 import org.hibernate.annotations.ColumnDefault;
 import org.hibernate.annotations.CreationTimestamp;
+
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -47,9 +50,11 @@ public class Board {
 	
 	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "userId")
-	private User userId;
+	private User user;
 	
 	@OneToMany(mappedBy = "board", fetch = FetchType.EAGER)
+	@JsonIgnoreProperties({"board", "content"})
+	@OrderBy("id DESC")
 	private List<Reply> reply;
 	
 	@CreationTimestamp

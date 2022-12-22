@@ -22,7 +22,7 @@ public class PrincipalDetailService implements UserDetailsService{
 			.orElseThrow(()->{
 				return new UsernameNotFoundException("해당 유저를 찾을수 없습니다.");
 			});
-		System.out.println("principal : " + principal.toString());
+		
 		return new PrincipalDetail(principal);
 	}
 

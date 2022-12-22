@@ -10,6 +10,8 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -33,10 +35,12 @@ public class Reply {
 	
 	@ManyToOne
 	@JoinColumn(name = "boardId")
+	@JsonIgnoreProperties({"replys", "userId"})
 	private Board board;
 	
 	@ManyToOne
 	@JoinColumn(name = "userId")
+	@JsonIgnoreProperties({"password", "role", "email", "oauth"})
 	private User user;
 	
 	private Timestamp createDate;

@@ -26,7 +26,7 @@ public class BoardController {
 		Page<Board> boards = boardService.getBoardList(pageble);
 		
 		boards.stream().forEach(item ->{
-			System.out.println(item);
+			
 		});
 		
 		model.addAttribute("boards", boards);
@@ -48,7 +48,13 @@ public class BoardController {
 		return "/board/detail";
 	}
 	
-	
+	@GetMapping("/board/{id}/update_form")
+	public String updateForm(@PathVariable int id, Model model) {
+		
+		model.addAttribute("board", boardService.boardDetail(id));
+		
+		return "/board/update_form";
+	}
 	
 	
 }

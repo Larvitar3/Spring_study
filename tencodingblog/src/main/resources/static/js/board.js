@@ -13,8 +13,13 @@ let index = {
 		});
 		
 		$("#btn--update").bind("click", () =>{
-			this.update;
+			this.update();
 		});
+		
+		$("#btn-reply-save").bind("click", () => {
+			this.replySave();
+		});
+		
 		
 	},
 	
@@ -63,12 +68,12 @@ let index = {
 		});
 	},
 	
+
 	update: function(){
 		
 		let boardId = $("#board-id").attr("data-id");
 		
 		let data = {
-			
 			title: $("#title").val(),
 			content: $("#content").val()
 		};
@@ -76,20 +81,44 @@ let index = {
 		$.ajax({
 			type: "PUT",
 			url: "/api/board/" + boardId,
+			data: JSON.stringify(data),
 			contentType: "application/json; charset=UTF-8",
 			dataType: "json"
 		}).done(function(data, textStatus, xhr){
-			if(data.status == "OK"){
+			if(data.status){
 				alert("글 수정이 완료되었습니다.");
 				location.href = "/";
 			}
 		}).fail(function(error){
 			alert("글 수정에 실패하였습니다.");
 			console.log(error);
-		});
+		})
 		
-	}	
+	},
 	
+	replySave : function() {
+		
+		let replyData = {
+			boardId: $("#board-id").text(),  // fk (board pk ) 
+			content: $("#content").val() 
+		};
+		// ajax 통신 요청 
+		$.ajax({
+			type:"POST", 
+			url: `/api/board/${replyData.boardId}/reply`,  
+			data: JSON.stringify(replyData),
+			contentType : "application/json; charset=utf-8", 
+			dataType: "json"
+		}).done(function(data, textSatus, xhr) {
+			if(data.status == "OK") {
+				alert("댓글 작성이 완료 되었습니다");
+				location.href = `/board/${replyData.boardId}`;
+			}
+		}).fail((error) => {
+			console.log(error);
+			alert("댓글 작성에 실패 하였습니다");
+		} );
+	}
 	
 }
 
