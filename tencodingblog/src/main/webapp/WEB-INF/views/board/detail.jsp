@@ -33,8 +33,13 @@
 			<c:forEach var="reply" items="${board.reply}">
 				<li style="padding: 30px 5px;">
 					<div class="" style="float: left; line-height: 40px;">${reply.content}</div>
+					
+					<c:if test="${reply.user.id eq principal.user.id}">
 					<button type="button" class="btn btn-danger"
-						style="float: right; margin-right: 30px; height: 40px;">삭제</button>
+						style="float: right; margin-right: 30px; height: 40px;"
+						onclick="index.replyDelete(${board.id}, ${reply.id})">삭제</button>
+					</c:if>
+					
 					<div class="" style="float: right; line-height: 40px;">작성자 |
 						${reply.user.username} &nbsp&nbsp&nbsp</div>
 				</li>

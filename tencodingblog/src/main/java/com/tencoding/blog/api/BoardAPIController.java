@@ -60,7 +60,18 @@ public class BoardAPIController {
 	}
 
 
-	
+	@DeleteMapping("/api/board/{boardId}/reply/{replyId}")
+	public ResponseDTO<Integer> deleteReplyById(@PathVariable String boardId, @PathVariable int replyId,
+			@AuthenticationPrincipal PrincipalDetail principalDetail){
+		try {
+			boardService.deleteReplyById(replyId, principalDetail.getUser().getId());
+		} catch (Exception e) {
+			
+		}
+		
+		return new ResponseDTO<Integer>(HttpStatus.OK, 1);
+		
+	}
 	
 	
 	

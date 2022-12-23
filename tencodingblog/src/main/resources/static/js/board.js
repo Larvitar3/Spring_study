@@ -118,7 +118,24 @@ let index = {
 			console.log(error);
 			alert("댓글 작성에 실패 하였습니다");
 		} );
-	}
+	},
+	
+	replyDelete: function(boardId, replyId){
+		
+		$.ajax({
+			type: "DELETE",
+			url: `/api/board/${boardId}/reply/${replyId}`
+		}).done(function(resData, textStatus, xhr){
+			if(resData.status == "OK"){
+				alert("댓글 삭제에 성공했습니다");
+				location.href = `/board/${boardId}`;
+			}
+		}).fail(function(error){
+			alert("댓글 삭제에 실패 하였습니다.");
+			alert(error);
+		});
+		
+	},
 	
 }
 

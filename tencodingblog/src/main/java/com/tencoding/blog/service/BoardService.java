@@ -75,6 +75,32 @@ public class BoardService {
 		replyRepository.save(requestReply); 
 	}
 	
+	@Transactional
+	public void deleteReplyById(int replyId, int reqUserId) {
+		
+		Reply reply = replyRepository.findById(replyId).orElseThrow(() -> {
+			return new IllegalArgumentException("댓글을 찾을 수 없습니다.");
+		});
+		
+		try {
+			
+			int dbWriter = reply.getUser().getId();
+			int principal = reqUserId;
+			
+			if(dbWriter == principal) {
+				replyRepository.deleteById(replyId);
+			}
+			
+		} catch (Exception e) {
+			
+		}
+	}
+	
+	@Transactional
+	public Page<Board> searchBoard(String q, Pageable pageable){
+		return boardRepository.findByTitleContaining(q, pageable);
+	}
+	
 	
 	
 }
